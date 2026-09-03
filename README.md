@@ -144,6 +144,11 @@ This keeps the repo free of redistributed model parameters while remaining fully
 reproducible. To regenerate the reference parity data, run Perch 2.0 in a TF-capable
 environment (e.g. Colab, via `perch-hoplite`'s TF model) on your own clips.
 
+**Optional exact mel filterbank.** `PerchModel(..., exact_mel_npy=...)` can load the exact
+mel matrix extracted from the model graph for full fidelity, but this is **not required** —
+the built-in HTK reconstruction already agrees with it to <2e-5. That array is Google-derived
+and, like the weights, is regenerated locally rather than shipped here.
+
 ---
 
 ## Setup / environment
@@ -182,8 +187,7 @@ if device.type == "cuda":
     torch.backends.cuda.matmul.allow_tf32 = True
     torch.backends.cudnn.allow_tf32 = True
 
-model = PerchModel("perch_weights",                              # dir you generated above
-                   exact_mel_npy="const__pad1_output_0.npy").eval().to(device)
+model = PerchModel("perch_weights").eval().to(device)           # dir you generated above; built-in HTK mel agrees with the graph to <2e-5
 model = torch.compile(model)   # ~2.5x throughput; needs Python dev headers. Optional.
 
 audio = torch.from_numpy(np.load("clip.npy")).to(device)        # (160000,) or (B,160000), 32 kHz mono, 5 s
@@ -206,7 +210,7 @@ pip install perch-hoplite            # core only; no [tf]/[jax] extras
 python perch_hoplite_torch_adapter.py \
     --audio_dir /path/to/wavs --glob '*.wav' \
     --db_dir ./hoplite_db --weights_dir ./perch_weights \
-    --exact_mel ./const__pad1_output_0.npy --device cuda \
+    --device cuda \
     --hop_size_s 5.0                 # 5.0 = non-overlapping; e.g. 2.5 to overlap
 ```
 
