@@ -8,8 +8,8 @@
 # name/shape). The classification heads (huge 14795-class matmuls) are skipped
 # to keep the upload small -- we only need up to the 1536-d embedding.
 #
-# Output: ~/perch-pytorch/perch_weights/{weights.npz, graph_manifest.json}
-# Zip perch_weights/ and upload both files.
+# Output: <repo>/perch_weights/{weights.npz, graph_manifest.json}
+# Run this once after cloning; the adapter reads that directory directly.
 # =============================================================================
 import os, sys, json
 import numpy as np
@@ -19,7 +19,10 @@ import onnx
 from onnx import numpy_helper
 from huggingface_hub import hf_hub_download
 
-OUT = os.path.expanduser("~/perch-pytorch/perch_weights")
+# Write into this repo's own directory, whatever it is named or wherever it
+# is cloned. The adapter, check_adapter.py, and perch_bench_native_spark.py
+# all resolve perch_weights/ relative to the repo, so this must match.
+OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "perch_weights")
 os.makedirs(OUT, exist_ok=True)
 SIZE_CAP = 3_000_000          # skip initializers bigger than this (= class heads)
 

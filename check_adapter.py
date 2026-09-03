@@ -1,8 +1,7 @@
 import numpy as np, torch
 from perch_hoplite_torch_adapter import PerchTorchModel
 
-m = PerchTorchModel(weights_dir="./perch_weights",
-                    exact_mel="./const__pad1_output_0.npy", device="cuda")
+m = PerchTorchModel(weights_dir="./perch_weights", device="cuda")
 
 for cid in ["clip00","clip01","clip02","clip03"]:
     x = np.load(f"perch2_refs/{cid}_input.npy")

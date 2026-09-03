@@ -61,7 +61,23 @@ class PerchFrontend(nn.Module):
         assert m.shape == (self.NFFT // 2 + 1, self.NMELS), m.shape
         self.mel.copy_(torch.from_numpy(m))
         return self
+    def load_exact_mel_from_npz(self, weights_dir: str):
+        """Load the exact mel filterbank from the extracted weights archive.
 
+        The ONNX graph stores it as a Constant node, so perch_extract_weights
+        already captures it under 'pad1_output_0' — no separate .npy needed.
+        Returns self on success, None if the key is absent.
+        """
+        import os
+        npz_path = os.path.join(weights_dir, "weights.npz")
+        with np.load(npz_path) as z:
+            if "pad1_output_0" not in z.files:
+                return None
+            m = z["pad1_output_0"].astype(np.float64)
+        assert m.shape == (self.NFFT // 2 + 1, self.NMELS), m.shape
+        self.mel.copy_(torch.from_numpy(m))
+        return self
+    
     def _mel_matrix(self) -> np.ndarray:
         nbins = self.NFFT // 2 + 1
         hz2mel = lambda f: self.Q * np.log1p(f / self.BREAK)

@@ -224,6 +224,12 @@ class PerchModel(nn.Module):
         self.frontend = PerchFrontend()
         if exact_mel_npy:
             self.frontend.load_exact_mel(exact_mel_npy)
+        else:
+            # Prefer the exact matrix from the weights archive; fall back to the
+            # HTK reconstruction (agrees to <2e-5) if the key isn't present.
+            if self.frontend.load_exact_mel_from_npz(weights_dir) is None:
+                print("note: exact mel not found in weights.npz — "
+                      "using HTK reconstruction (agrees to <2e-5)")
         self.embedder = PerchEmbedder(weights_dir)
 
     def forward(self, audio, return_spatial=False):
