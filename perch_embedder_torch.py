@@ -3,7 +3,7 @@
 # Perch 2.0 embedder — native PyTorch reimplementation (VALIDATED, cos=1.0)
 # =============================================================================
 # A from-scratch EfficientNet-B3 embedder matching Google Perch 2.0, with weights
-# loaded from the model's own graph (extracted via perch_extract_weights_spark.py
+# loaded from the model's own graph (extracted via extract_weights.py
 # -> weights.npz + graph_manifest.json). Combined with PerchFrontend it forms a
 # fully TensorFlow-free, ONNX-free native PyTorch Perch 2.0 embedding model.
 #

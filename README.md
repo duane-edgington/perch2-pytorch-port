@@ -110,7 +110,7 @@ for you.
 |---|---|
 | `perch_frontend_torch.py` | `PerchFrontend` — native log-mel frontend (`nn.Module`) |
 | `perch_embedder_torch.py` | `PerchEmbedder` (EfficientNet-B3) + `PerchModel` (full raw-audio→embedding pipeline) |
-| `perch_extract_weights_spark.py` | Extract backbone weights from the model graph → `weights.npz` + `graph_manifest.json` |
+| `extract_weights.py` | Extract backbone weights from the model graph → `weights.npz` + `graph_manifest.json`. Runs anywhere: CPU only, no GPU, no TensorFlow. |
 | `perch_hoplite_torch_adapter.py` | Wrap the model in perch-hoplite's `EmbeddingModel`; embed an audio folder → hoplite DB (no TF). Includes the mandatory per-window peak-normalization. |
 | `perch_bench_native_spark.py` | Validate + benchmark the native model on the GPU (eager vs `torch.compile`) |
 | `check_adapter.py` | Direct parity check: adapter `embed()` vs reference embeddings |
@@ -136,7 +136,7 @@ this repo.** You generate them yourself, locally, from Google's published model:
 1. Obtain the Perch 2.0 ONNX export
    ([`justinchuby/Perch-onnx`](https://huggingface.co/justinchuby/Perch-onnx), a faithful
    ONNX conversion of the Kaggle-hosted Perch 2.0 TF model).
-2. Run `perch_extract_weights_spark.py` against it to write `perch_weights/weights.npz`
+2. Run `extract_weights.py` against it to write `perch_weights/weights.npz`
    (~45 MB, backbone only) and `graph_manifest.json` locally.
 3. Point `PerchModel(...)` at that directory.
 

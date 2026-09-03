@@ -18,7 +18,7 @@ Perch 2.0
   - Source: https://github.com/google-research/perch
     and the Kaggle "google/bird-vocalization-classifier" (Perch 2.0) model.
   - This repository DOES NOT redistribute Perch 2.0 weights. The weights are
-    regenerated locally by the user via perch_extract_weights_spark.py from
+    regenerated locally by the user via extract_weights.py from    
     Google's published model (see README, "Getting the weights").
 
 ONNX export

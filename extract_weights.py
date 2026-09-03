@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # =============================================================================
-# Perch 2.0 EMBEDDER weight extraction  (RUN ON THE SPARK)
+# Perch 2.0 EMBEDDER weight extraction  (runs anywhere: CPU only, no GPU, no TF)
 # =============================================================================
 # Dumps the EfficientNet-B3 backbone weights (stem, 26 MBConv blocks, head conv,
 # and their folded BatchNorm affines + SE weights) from the validated ONNX into
@@ -75,5 +75,5 @@ sz = os.path.getsize(os.path.join(OUT, "weights.npz")) / 1e6
 print(f"saved {len(weights)} weight tensors ({tot/1e6:.1f}M params) -> weights.npz ({sz:.1f} MB)")
 print(f"skipped {len(skipped_big)} big tensors (class heads): "
       f"{[s[0] for s in skipped_big][:6]}")
-print(f"\nUpload BOTH: {OUT}/weights.npz  and  {OUT}/graph_manifest.json")
-print("(zip the perch_weights folder if easier)")
+print(f"\nWeights written to {OUT}/ — the adapter reads this directory directly.")
+

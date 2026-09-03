@@ -73,7 +73,7 @@ ONNX's constant-folded / BN-fused combinations. Fidelity is established end-to-e
 ## Repo layout
 
 - Top level: core deliverable (`perch_frontend_torch.py`, `perch_embedder_torch.py`,
-  `perch_extract_weights_spark.py`, `perch_hoplite_torch_adapter.py`,
+   `extract_weights.py`, `perch_hoplite_torch_adapter.py`, 
   `perch_bench_native_spark.py`, `check_adapter.py`, `check_db.py`), install/resample scripts,
   and docs (`README.md`, `perch2_logmel_settings.md`, `benchmark_results.md`).
 - `dev/`: the reverse-engineering trail (introspect → onnx probe → frontend calibration →

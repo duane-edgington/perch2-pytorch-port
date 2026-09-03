@@ -64,7 +64,7 @@ class PerchFrontend(nn.Module):
     def load_exact_mel_from_npz(self, weights_dir: str):
         """Load the exact mel filterbank from the extracted weights archive.
 
-        The ONNX graph stores it as a Constant node, so perch_extract_weights
+               The ONNX graph stores it as a Constant node, so extract_weights.py 
         already captures it under 'pad1_output_0' — no separate .npy needed.
         Returns self on success, None if the key is absent.
         """
