@@ -1,0 +1,44 @@
+perch2-pytorch-port
+Copyright 2026 Duane R. Edgington, Monterey Bay Aquarium Research Institute (MBARI)
+
+This product includes software developed at MBARI.
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+------------------------------------------------------------------------
+Third-party components and attribution
+------------------------------------------------------------------------
+
+This repository is an independent PyTorch reimplementation ("port") of the
+embedding model from Google Research's Perch 2.0. It is not produced or
+endorsed by Google.
+
+Perch 2.0
+  - Model, architecture, and trained weights: Google Research.
+  - Released under the Apache License, Version 2.0.
+  - Source: https://github.com/google-research/perch
+    and the Kaggle "google/bird-vocalization-classifier" (Perch 2.0) model.
+  - This repository DOES NOT redistribute Perch 2.0 weights. The weights are
+    regenerated locally by the user via perch_extract_weights_spark.py from
+    Google's published model (see README, "Getting the weights").
+
+ONNX export
+  - justinchuby/Perch-onnx: an ONNX conversion of Google's TF Perch 2.0 model.
+  - https://huggingface.co/justinchuby/Perch-onnx
+  - Used here as a validation oracle and as the source the weight-extraction
+    script reads. Not claimed as this project's work.
+
+Labels / taxonomy
+  - cgeorgiaw/Perch (iNaturalist taxonomy), as published with the model.
+
+EfficientNet
+  - EfficientNet architecture: Tan & Le, "EfficientNet: Rethinking Model
+    Scaling for Convolutional Neural Networks," 2019.
+
+perch-hoplite
+  - Google Research's agile-modeling toolkit used (core, TensorFlow-free) for
+    the embedding database and search/classifier workflow.
+  - https://github.com/google-research/perch-hoplite
+
+Trademarks and model names ("Perch", "Perch 2.0", "Grace Blackwell", "NVIDIA")
+are the property of their respective owners and are used here for identification
+only.

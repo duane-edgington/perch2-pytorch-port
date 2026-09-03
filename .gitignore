@@ -1,0 +1,30 @@
+# --- Google-derived model data: NEVER commit (regenerate locally; see README) ---
+perch_weights/
+*.npz
+*.npy
+graph_manifest.json
+perch2_refs/
+const__pad1_output_0.npy
+
+# --- audio / large data ---
+*.wav
+*.flac
+*.tgz
+*.tar.gz
+example_clips/
+hoplite_db/
+hoplite_db_test/
+frontend_probe/
+*.db
+
+# --- environments / build / logs ---
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.log
+.ipynb_checkpoints/
+
+# --- OS / editor ---
+.DS_Store
+*.swp
