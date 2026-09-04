@@ -45,7 +45,7 @@ fin/blue whale sit below its band and are handled by separate detectors.)
 |---|---|---|---|
 | Native embedder (fed reference frontend) | CPU | 0.9999999 | ~7e-7 |
 | Native full pipeline (raw audio → embedding) | CPU | 1.0000000 | ~1–5e-5 |
-| Native full pipeline | GB10 GPU | 0.9999997 | ~8e-4 |
+| Native full pipeline (vs live TF, same-device)      | GB10 GPU | 0.9999998 | ~4e-4      |
 | ONNX bridge (cross-check, `justinchuby/Perch-onnx`) | CPU | — | ~1e-9 |
 
 Relative error is reported alongside cosine deliberately: cosine can look ~1.0 while the
