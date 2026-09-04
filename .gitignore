@@ -3,7 +3,9 @@ perch_weights/
 *.npz
 *.npy
 graph_manifest.json
-perch2_refs
+# perch2_refs/ IS committed — the validation clips check_adapter.py needs
+!perch2_refs/
+!perch2_refs/*.npy
 const__pad1_output_0.npy
 
 # --- audio / large data ---
