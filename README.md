@@ -204,10 +204,10 @@ perch-hoplite's embedding database and similarity search are TensorFlow-free, so
 build a database with this model and query it with hoplite's tools. **Its classifier is not:**
 `perch_hoplite/agile/classifier.py` imports TensorFlow at module level, as do
 `zoo/models_tf.py`, `zoo/taxonomy_model_tf.py`, `zoo/model_configs.py`, and `zoo/kaggle_hub.py`.
-Training a linear probe through upstream hoplite therefore still pulls in Keras. For a
+Training a linear classifier through upstream hoplite therefore still pulls in Keras. For a
 TF-free classifier, the companion repo
 [`perch-hoplite-orcas-MBNMS`](https://github.com/duane-edgington/perch-hoplite-orcas-MBNMS)
-substitutes a PyTorch linear probe (`pipeline/src/train.py`) for hoplite's Keras one and mocks
+substitutes a PyTorch linear classifier (`pipeline/src/train.py`) for hoplite's Keras one and mocks
 the TF import. Build a database as follows:
 
 ```bash
