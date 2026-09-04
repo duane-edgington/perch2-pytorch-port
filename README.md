@@ -117,8 +117,7 @@ for you.
 | `check_db.py` | Read embeddings back out of a hoplite DB and compare to references by filename |
 
 **Docs:** `perch2_logmel_settings.md` (verified frontend spec — the exact log-mel
-parameters, validated against live TF), `benchmark_results.md`, `CLAUDE.md` (repo
-orientation for AI assistants).
+parameters, validated against live TF) and `benchmark_results.md` .
 
 **Environment / data prep (shell):** `clean_install.sh`, `check_install.sh`,
 `new_32k_resample_sox.sh`.
