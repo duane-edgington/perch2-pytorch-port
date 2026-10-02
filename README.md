@@ -1,4 +1,4 @@
-# perch2-pytorch-port
+# Perch 2.0 in Pure PyTorch — TensorFlow-Free Bioacoustics Embeddings on Grace Blackwell
 
 A from-scratch, TensorFlow-free reimplementation of [Google Research's Perch 2.0](https://github.com/google-research/perch)
 bioacoustics **embedding model** in idiomatic PyTorch — a log mel-spectrogram frontend
