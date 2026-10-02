@@ -281,6 +281,8 @@ Two details reverse-engineered rather than documented, and essential for exactne
 - **Perch 2.0 model, architecture, and weights:** Google Research (Apache-2.0). Weights are
   regenerated locally via the extraction script, **not redistributed here**.
 - **ONNX export:** [`justinchuby/Perch-onnx`](https://huggingface.co/justinchuby/Perch-onnx).
+
+  [`perchv2-pytorch`](https://github.com/bghani/perchv2-pytorch).
 - **Labels / taxonomy:** cgeorgiaw/Perch (iNaturalist taxonomy).
 - **EfficientNet architecture:** Tan & Le, 2019.
 - **This reimplementation:** Duane R. Edgington, MBARI. Code Apache-2.0 (see `LICENSE`,
