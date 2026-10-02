@@ -37,6 +37,29 @@ fin/blue whale sit below its band and are handled by separate detectors.)
 
 ---
 
+## Quickstart
+
+```python
+import numpy as np, torch
+from perch_embedder_torch import PerchModel
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+if device.type == "cuda":
+    torch.backends.cuda.matmul.allow_tf32 = True
+    torch.backends.cudnn.allow_tf32 = True
+
+model = PerchModel("perch_weights").eval().to(device)           # dir you generated above; built-in HTK mel agrees with the graph to <2e-5
+model = torch.compile(model)   # ~2.5x throughput; needs Python dev headers. Optional.
+
+audio = torch.from_numpy(np.load("clip.npy")).to(device)        # (160000,) or (B,160000), 32 kHz mono, 5 s
+with torch.no_grad():
+    emb = model(audio)                                          # (B, 1536)
+```
+
+The frontend runs its FFT in float64 for precision; the CNN runs in float32.
+
+---
+
 ## Results (validated against the reference TensorFlow outputs)
 
 **Numerical parity** — cosine similarity / relative error of the embedding vs the TF reference:
@@ -175,28 +198,7 @@ Gotchas learned the hard way:
 
 ---
 
-## Quickstart
 
-```python
-import numpy as np, torch
-from perch_embedder_torch import PerchModel
-
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-if device.type == "cuda":
-    torch.backends.cuda.matmul.allow_tf32 = True
-    torch.backends.cudnn.allow_tf32 = True
-
-model = PerchModel("perch_weights").eval().to(device)           # dir you generated above; built-in HTK mel agrees with the graph to <2e-5
-model = torch.compile(model)   # ~2.5x throughput; needs Python dev headers. Optional.
-
-audio = torch.from_numpy(np.load("clip.npy")).to(device)        # (160000,) or (B,160000), 32 kHz mono, 5 s
-with torch.no_grad():
-    emb = model(audio)                                          # (B, 1536)
-```
-
-The frontend runs its FFT in float64 for precision; the CNN runs in float32.
-
----
 
 ## Use with perch-hoplite (embedding and search, no TensorFlow)
 
