@@ -1,5 +1,8 @@
 # Perch 2.0 in Pure PyTorch — TensorFlow-Free Bioacoustics Embeddings on Grace Blackwell
 
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/duane-edgington/perch2-pytorch-port/blob/main/perch2_pytorch_verify.ipynb)
+
+
 A from-scratch, TensorFlow-free reimplementation of [Google Research's Perch 2.0](https://github.com/google-research/perch)
 bioacoustics **embedding model** in idiomatic PyTorch — a log mel-spectrogram frontend
 plus an EfficientNet-B3 embedder — validated to reproduce the reference TensorFlow model
