@@ -295,7 +295,7 @@ Two details reverse-engineered rather than documented, and essential for exactne
 
 Accompanies the PyTorch Conference North America 2026 poster, "Perch 2.0 and Perch-Hoplite
 in Pure PyTorch: An End-to-End TensorFlow-Free Bioacoustics Pipeline" (D. R. Edgington,
-MBARI). `[link/DOI to follow]`
+MBARI). `[link/DOI]`(https://events.linuxfoundation.org/pytorch-conference-north-america/program/schedule-posters/?id=1285806)
 
 ## License
 
