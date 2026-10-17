@@ -268,7 +268,7 @@ Two details reverse-engineered rather than documented, and essential for exactne
 
 ---
 
-## Scope and honest notes
+## Scope and Technical Notes
 
 - **Embeddings only.** The classification head is not ported; Perch's main use is its
   embeddings. Calibrated class logits, if needed, are left to the ONNX bridge.
